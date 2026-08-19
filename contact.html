@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Sphere - Contact Us</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;800;900&display=swap');
+
+    :root {
+      --bg: #030508;
+      --card-bg: rgba(12, 16, 26, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --neon-red: #ff2a5f;
+      --neon-cyan: #00f0ff;
+      --neon-purple: #8a2be2;
+      --text-main: #f0f4f8;
+      --text-sub: #7e8b9b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 80px 24px;
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 10% 80%, rgba(255, 42, 95, 0.05) 0%, transparent 40%);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--neon-cyan);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .title {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .title span {
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #00ff88;
+      margin-bottom: 40px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #00ff88;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    .contact-split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    /* Left Info Column */
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(16px);
+    }
+
+    .info-item {
+      margin-bottom: 30px;
+    }
+
+    .info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-label {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-sub);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .info-value {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--neon-cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--neon-cyan);
+    }
+
+    /* Right Form Column */
+    .form-terminal {
+      background: rgba(5, 7, 12, 0.9);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.05);
+    }
+
+    .terminal-top {
+      background: rgba(20, 25, 38, 0.8);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .c-red { background: #ff5f56; }
+    .c-yellow { background: #ffbd2e; }
+    .c-green { background: #27c93f; }
+
+    .terminal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-left: auto;
+    }
+
+    .form-body {
+      padding: 40px;
+    }
+
+    .field-group {
+      margin-bottom: 25px;
+    }
+
+    .field-group label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .input-control, .select-control, .textarea-control {
+      width: 100%;
+      background: rgba(12, 16, 26, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-control:focus, .select-control:focus, .textarea-control:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+
+    .textarea-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chip.active, .chip:hover {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--neon-red), var(--neon-purple));
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 992px) {
+      .contact-split {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <span class="tag">// Dispatch Channel</span>
+    <h1 class="title">Initiate a <span>Project Request</span></h1>
+    
+    <div class="status-badge">
+      <div class="status-dot"></div>
+      <span>Systems Active — Ready for New Projects</span>
+    </div>
+
+    <div class="contact-split">
+      
+      <!-- Direct Contact Details -->
+      <div class="info-card">
+        <div class="info-item">
+          <span class="info-label">Direct Email</span>
+          <div class="info-value">
+            <span id="emailText">hello@codesphere.dev</span>
+            <button class="copy-btn" onclick="copyValue('emailText')">Copy</button>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Source Code & Repositories</span>
+          <div class="info-value">
+            <span>github.com/codesphere</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Expected Response Time</span>
+          <div class="info-value">Under 24 Hours</div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Location</span>
+          <div class="info-value">Remote / Global Engineering</div>
+        </div>
+      </div>
+
+      <!-- Terminal Contact Form -->
+      <div class="form-terminal">
+        <div class="terminal-top">
+          <div class="circle c-red"></div>
+          <div class="circle c-yellow"></div>
+          <div class="circle c-green"></div>
+          <span class="terminal-title">message-payload.json</span>
+        </div>
+
+        <form class="form-body" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+          <div class="field-group">
+            <label for="name">// Full Name</label>
+            <input type="text" id="name" class="input-control" placeholder="Enter your full name" required />
+          </div>
+
+          <div class="field-group">
+            <label for="email">// Email Address</label>
+            <input type="email" id="email" class="input-control" placeholder="yourname@domain.com" required />
+          </div>
+
+          <div class="field-group">
+            <label>// Select Core Service Need</label>
+            <div class="chip-group">
+              <span class="chip active">Web Dev</span>
+              <span class="chip">AI & ML</span>
+              <span class="chip">SEO & Growth</span>
+              <span class="chip">Other</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="message">// Project Specifications</label>
+            <textarea id="message" class="textarea-control" placeholder="Briefly describe your scope, timelines, and key requirements..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Send Message <span>&rarr;</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function copyValue(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text);
+      alert('Copied to clipboard: ' + text);
+    }
+
+    // Toggle Chip Selection
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

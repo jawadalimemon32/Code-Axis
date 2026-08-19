@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Sphere - About Us</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;800;900&display=swap');
+
+    :root {
+      --bg: #030508;
+      --card-bg: rgba(12, 16, 26, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --neon-red: #ff2a5f;
+      --neon-cyan: #00f0ff;
+      --neon-purple: #8a2be2;
+      --text-main: #f0f4f8;
+      --text-sub: #7e8b9b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 80px 24px;
+      background-image: 
+        radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(255, 42, 95, 0.05) 0%, transparent 40%);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--neon-red);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    /* Split Section Layout */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .about-text h1 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-card h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--neon-cyan);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-card p {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 0;
+    }
+
+    /* Terminal Aesthetic Window */
+    .cyber-terminal {
+      background: rgba(5, 7, 12, 0.9);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.05);
+    }
+
+    .terminal-top {
+      background: rgba(20, 25, 38, 0.8);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .c-red { background: #ff5f56; }
+    .c-yellow { background: #ffbd2e; }
+    .c-green { background: #27c93f; }
+
+    .terminal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-left: auto;
+    }
+
+    .terminal-body {
+      padding: 30px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .kwd { color: var(--neon-red); }
+    .cls { color: var(--neon-cyan); }
+    .str { color: #00ff88; }
+    .cmt { color: #5c677d; }
+
+    /* Cards Section */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .pillar-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .pillar-box:hover {
+      border-color: var(--neon-red);
+      transform: translateY(-5px);
+    }
+
+    .pillar-box h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .pillar-box p {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 992px) {
+      .about-split {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="about-split">
+      
+      <div class="about-text">
+        <span class="tag">// Strategic Engineering</span>
+        <h1>Engineers of the Digital Frontier</h1>
+        <p>Code Sphere is an elite software engineering agency built to transform complex operational challenges into production-ready web applications, machine learning workflows, and scalable backends.</p>
+        <p>We combine extreme performance optimization with cutting-edge visual design, ensuring every system we deploy scales effortlessly under heavy traffic.</p>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <h2>50+</h2>
+            <p>Deployments</p>
+          </div>
+          <div class="stat-card">
+            <h2>99.9%</h2>
+            <p>Uptime Score</p>
+          </div>
+          <div class="stat-card">
+            <h2>24/7</h2>
+            <p>Support System</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Terminal Display -->
+      <div class="cyber-terminal">
+        <div class="terminal-top">
+          <div class="circle c-red"></div>
+          <div class="circle c-yellow"></div>
+          <div class="circle c-green"></div>
+          <span class="terminal-title">sphere-manifest.config.ts</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="cmt">// Code Sphere System Blueprint</span></p>
+          <p><span class="kwd">export class</span> <span class="cls">AgencyManifest</span> {</p>
+          <p>&nbsp;&nbsp;<span class="kwd">readonly</span> mission = <span class="str">"Digital Excellence"</span>;</p>
+          <p>&nbsp;&nbsp;<span class="kwd">readonly</span> stack = [<span class="str">"Web Apps"</span>, <span class="str">"AI Models"</span>];</p>
+          <p>&nbsp;&nbsp;<span class="kwd">readonly</span> optimization = <span class="str">"Maximum"</span>;</p>
+          <br>
+          <p>&nbsp;&nbsp;<span class="kwd">public</span> <span class="cls">deploy</span>() {</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kwd">return</span> <span class="str">"System Online & Operational"</span>;</p>
+          <p>&nbsp;&nbsp;}</p>
+          <p>}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Agency Pillars -->
+    <div class="pillars-grid">
+      <div class="pillar-box">
+        <h3>⚡ High Speed Execution</h3>
+        <p>Optimized code paths engineered for instant render speeds and zero latency overhead.</p>
+      </div>
+
+      <div class="pillar-box">
+        <h3>🔒 Hardened Security</h3>
+        <p>Built-in security compliance and encryption standards protecting application logic.</p>
+      </div>
+
+      <div class="pillar-box">
+        <h3>📈 Dynamic Scalability</h3>
+        <p>Resilient cloud infrastructure designed to scale seamlessly with growing user bases.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
