@@ -1,224 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Code Sphere - Digital Excellence</title>
-    
-    <!-- AOS Library CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-      
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-        font-family: "Poppins", sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Sphere | Web, App and AI Solutions</title>
+  <meta name="description" content="Code Sphere builds websites, mobile apps and AI solutions for growing businesses. Get a free quote or join our internship program.">
 
-      .page {
-        min-height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-      }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;800;900&display=swap');
 
-      #page1 {
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.85)), 
-                    url('https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-        background-size: cover;
-        background-position: center;
-      }
+    :root {
+      --bg: #030508;
+      --card-bg: rgba(12, 16, 26, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --neon-red: #ff2a5f;
+      --neon-cyan: #00f0ff;
+      --neon-purple: #8a2be2;
+      --text-main: #f0f4f8;
+      --text-sub: #7e8b9b;
+    }
 
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 50px;
-        height: 4.5rem;
-        background-color: #ffffff;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-      }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+    html { scroll-behavior: smooth; }
 
-      .logo h1 {
-        color: #0e0e0e;
-        font-size: 1.8rem;
-        font-weight: 700;
-      }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(255, 42, 95, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 90% 60%, rgba(0, 240, 255, 0.06) 0%, transparent 40%);
+    }
 
-      .logo span {
-        color: #ff0000;
-      }
+    a { color: inherit; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-      .menu ul {
-        display: flex;
-        list-style: none;
-        gap: 30px;
-      }
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(3, 5, 8, 0.85);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .bar { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-weight: 800; font-size: 1.35rem; text-decoration: none; white-space: nowrap; letter-spacing: -0.5px; }
+    .logo span { color: var(--neon-red); }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { text-decoration: none; color: var(--text-sub); padding: 8px 14px; border-radius: 8px; font-size: 0.95rem; transition: color 0.2s, background 0.2s; }
+    nav a:hover, nav a[aria-current] { color: var(--text-main); background: rgba(255, 255, 255, 0.06); }
+    nav .cta { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); color: #030508; font-weight: 700; margin-left: 8px; }
+    nav .cta:hover { color: #030508; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); filter: brightness(1.1); }
+    .menu { display: none; font: inherit; color: var(--text-main); background: none; border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
 
-      .menu ul li a {
-        text-decoration: none;
-        color: #000;
-        font-weight: 500;
-        padding-bottom: 5px;
-        transition: border-color 0.3s ease;
-      }
+    /* Internship banner */
+    .banner { background: rgba(0, 240, 255, 0.07); border-bottom: 1px solid rgba(0, 240, 255, 0.2); text-align: center; padding: 10px 16px; font-size: 0.93rem; }
+    .banner a { color: var(--neon-cyan); font-weight: 600; margin-left: 8px; white-space: nowrap; }
 
-      .menu ul li a:hover {
-        border-bottom: 2px solid red;
-      }
+    /* Hero */
+    .hero { padding: 100px 0 80px; }
+    .tag { font-family: 'JetBrains Mono', monospace; color: var(--neon-cyan); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 18px; }
+    h1 { font-size: clamp(2.4rem, 7vw, 4.6rem); font-weight: 900; letter-spacing: -2px; line-height: 1.05; margin-bottom: 22px; max-width: 16ch; }
+    h1 span { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .lead { color: var(--text-sub); font-size: 1.15rem; line-height: 1.7; max-width: 50ch; margin-bottom: 34px; }
+    .btns { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 15px 30px; border-radius: 12px; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn.primary { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); color: #030508; }
+    .btn.primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25); }
+    .btn.ghost { border: 1px solid rgba(255, 255, 255, 0.2); }
+    .btn.ghost:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
 
-      .btn button {
-        background-color: #0e0e0e;
-        padding: 12px 22px;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-weight: 600;
-        transition: background-color 0.3s ease;
-        cursor: pointer;
-      }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 70px; padding-top: 34px; border-top: 1px solid var(--border); }
+    .stats b { display: block; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--neon-red); line-height: 1.1; }
+    .stats span { color: var(--text-sub); font-size: 0.95rem; }
 
-      .btn button:hover {
-        background-color: #261FB3;
-      }
+    /* Sections */
+    section { padding: 70px 0; }
+    h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 14px; }
+    .sub { color: var(--text-sub); line-height: 1.7; max-width: 56ch; margin-bottom: 40px; }
 
-      .btn-secondary {
-        background-color: transparent !important;
-        border: 2px solid #ffffff !important;
-        color: #ffffff !important;
-        margin-left: 10px;
-      }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 24px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 32px; backdrop-filter: blur(16px); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-6px); border-color: rgba(0, 240, 255, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
+    .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .card p { color: var(--text-sub); line-height: 1.6; margin-bottom: 20px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips span { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--neon-cyan); background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.15); padding: 5px 11px; border-radius: 6px; }
+    .more { margin-top: 30px; }
+    .more a { color: var(--neon-cyan); text-decoration: none; font-weight: 600; }
+    .more a:hover { text-decoration: underline; }
 
-      .btn-secondary:hover {
-        background-color: #ffffff !important;
-        color: #0e0e0e !important;
-      }
+    /* Internship panel */
+    .panel { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; background: var(--card-bg); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 24px; padding: 48px; backdrop-filter: blur(16px);
+      background-image: radial-gradient(circle at 100% 0%, rgba(0, 240, 255, 0.1) 0%, transparent 55%); }
+    .panel ul { list-style: none; display: grid; gap: 14px; }
+    .panel li { display: flex; gap: 12px; line-height: 1.5; }
+    .panel li::before { content: ''; flex: none; width: 20px; height: 20px; margin-top: 2px; border-radius: 50%; border: 1px solid rgba(0, 240, 255, 0.35);
+      background: rgba(0, 240, 255, 0.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 12px no-repeat; }
 
-      /* Hero Banner Layout */
-      .banner {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0 50px;
-      }
+    /* Final CTA */
+    .final { text-align: center; }
+    .final p { margin: 0 auto 30px; }
+    .final .btns { justify-content: center; }
 
-      .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        max-width: 700px;
-        color: #ffffff;
-      }
+    footer { border-top: 1px solid var(--border); padding: 36px 24px; text-align: center; color: var(--text-sub); font-size: 0.92rem; }
+    footer nav { justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
 
-      .content h4 {
-        color: #ff4d4d;
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 
-      .content h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 15px;
-        color: #ffffff;
-      }
+    @media (max-width: 860px) {
+      .panel { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+    }
+    @media (max-width: 800px) {
+      .menu { display: block; }
+      header nav#nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: rgba(3, 5, 8, 0.98); padding: 12px 24px 20px; border-bottom: 1px solid var(--border); }
+      header nav#nav.open { display: flex; }
+      header nav#nav a { padding: 13px 12px; }
+      nav .cta { margin: 8px 0 0; text-align: center; }
+      .hero { padding: 64px 0 56px; }
+      .stats { margin-top: 48px; gap: 12px; }
+      .stats span { font-size: 0.85rem; }
+      section { padding: 52px 0; }
+    }
+    @media (max-width: 480px) {
+      .wrap, .bar { padding-left: 18px; padding-right: 18px; }
+      .btn { width: 100%; text-align: center; }
+      .card { padding: 26px 22px; }
+    }
+  </style>
+</head>
+<body>
 
-      .content p {
-        font-size: 1.1rem;
-        color: #ddd;
-        margin-bottom: 25px;
-        line-height: 1.5;
-      }
+  <header>
+    <div class="bar">
+      <a class="logo" href="index.html">Code <span>Sphere</span></a>
+      <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Main">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="services.html">Services</a>
+        <a href="services.html#internship">Internship</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Intern Login</a>
+        <a class="cta" href="contact.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
 
-      /* NEW: Stats Bar Component */
-      .hero-stats {
-        display: flex;
-        gap: 50px;
-        margin-top: 40px;
-        padding-top: 25px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-      }
+  <div class="banner">Internships are open. Free registration. <a href="apply.html">Apply now &rarr;</a></div>
 
-      .stat-item h2 {
-        color: #ff4d4d;
-        font-size: 2.2rem;
-        font-weight: 700;
-      }
+  <main>
+    <div class="wrap hero">
+      <span class="tag">// Ready for results? Code Sphere delivers.</span>
+      <h1>Your Partner in <span>Digital Excellence</span></h1>
+      <p class="lead">Expert web development, strategic marketing, and AI solutions designed for growth.</p>
+      <div class="btns">
+        <a class="btn primary" href="services.html">Explore Services</a>
+        <a class="btn ghost" href="contact.html">Contact Us</a>
+      </div>
 
-      .stat-item p {
-        color: #ccc;
-        font-size: 0.9rem;
-        margin-bottom: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <section class="page" id="page1">
-      <header>
-        <nav>
-          <div class="logo">
-            <h1>Code <span>Sphere</span></h1>
+      <div class="stats">
+        <div><b>50+</b><span>Projects Delivered</span></div>
+        <div><b>99%</b><span>Client Satisfaction</span></div>
+        <div><b>24/7</b><span>Technical Support</span></div>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <span class="tag">// What we do</span>
+        <h2>Solutions built to <span style="background:linear-gradient(135deg,var(--neon-cyan),var(--neon-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent">grow your business</span></h2>
+        <p class="sub">From your first website to smart AI tools, we design, build and support everything in one place.</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Fullstack Engineering</h3>
+            <p>Fast, responsive web apps built with modern JavaScript frameworks.</p>
+            <div class="chips"><span>React.js</span><span>Node.js</span><span>JavaScript</span></div>
           </div>
-          <div class="menu">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="blog.html">Blog</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
+          <div class="card">
+            <h3>AI &amp; ML Pipelines</h3>
+            <p>Machine learning tools, scrapers and analytics that power smart apps.</p>
+            <div class="chips"><span>Python</span><span>Pandas</span><span>Scikit-Learn</span></div>
           </div>
-          <div class="btn">
-            <button>Get Started</button>
+          <div class="card">
+            <h3>SEO &amp; Growth</h3>
+            <p>Search optimization and speed tuning built to improve your rankings.</p>
+            <div class="chips"><span>Core Web Vitals</span><span>Analytics</span></div>
           </div>
-        </nav>
-      </header>
+        </div>
+        <p class="more"><a href="services.html">See all services &rarr;</a></p>
+      </div>
+    </section>
 
-      <div class="banner">
-        <div class="content" data-aos="fade-right" data-aos-duration="1500">
-          <h4>Ready for results? Code Sphere Delivers.</h4>
-          <h1>Your Partner in<br>Digital Excellence</h1>
-          <p>Expert web development, strategic marketing, and AI solutions designed for growth.</p>
-          
-          <div class="btn">
-  <a href="services.html"><button>Explore Services</button></a>
-  <a href="contact.html"><button>Contact Us</button></a>
-</div>
-
-          <!-- NEW: Key Performance Indicators -->
-          <div class="hero-stats" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-            <div class="stat-item">
-              <h2>50+</h2>
-              <p>Projects Delivered</p>
-            </div>
-            <div class="stat-item">
-              <h2>99%</h2>
-              <p>Client Satisfaction</p>
-            </div>
-            <div class="stat-item">
-              <h2>24/7</h2>
-              <p>Technical Support</p>
+    <section>
+      <div class="wrap">
+        <div class="panel">
+          <div>
+            <span class="tag">// Internship program</span>
+            <h2>Learn by building real projects</h2>
+            <p class="sub" style="margin-bottom:28px">Join a working software house with a mentor, real tasks and weekly feedback.</p>
+            <div class="btns">
+              <a class="btn primary" href="apply.html">Apply for the internship</a>
+              <a class="btn ghost" href="services.html#internship">See the details</a>
             </div>
           </div>
-
+          <ul>
+            <li>Web, mobile, UI/UX and AI tracks</li>
+            <li>Weekly mentor review of your work</li>
+            <li>Certificate and recommendation letter</li>
+            <li>Remote or on-site, part-time and flexible</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
-  </body>
+    <section class="final">
+      <div class="wrap">
+        <h2>Have a project in mind?</h2>
+        <p class="sub">Tell us what you want to build. We reply within 24 hours with a free quote.</p>
+        <div class="btns">
+          <a class="btn primary" href="contact.html">Get a free quote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <nav aria-label="Footer">
+      <a href="services.html">Services</a>
+      <a href="services.html#internship">Internship</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Intern Login</a>
+    </nav>
+    &copy; Code Sphere. All rights reserved.
+  </footer>
+
+<script>
+  const m = document.getElementById('menu'), n = document.getElementById('nav');
+  m.addEventListener('click', () => { const o = n.classList.toggle('open'); m.setAttribute('aria-expanded', String(o)); });
+</script>
+</body>
 </html>
