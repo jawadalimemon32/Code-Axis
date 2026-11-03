@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apply for the Internship | Code Sphere</title>
-  <meta name="description" content="Apply for the Code Sphere internship in web development, mobile apps, UI/UX and AI. We reply within 24 hours.">
+  <meta name="description" content="Free registration. Apply for the Code Sphere internship in web development, mobile apps, UI/UX and AI. We reply within 24 hours.">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;800;900&display=swap');
@@ -51,6 +51,19 @@
       align-items: start;
     }
 
+    .side { position: sticky; top: 24px; }
+
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      border-radius: 99px;
+      padding: 5px 14px;
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      color: var(--neon-cyan);
+      background: rgba(0, 240, 255, 0.06);
+    }
+
     .tag {
       font-family: 'JetBrains Mono', monospace;
       color: var(--neon-cyan);
@@ -74,7 +87,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .intro { color: var(--text-sub); font-size: 1.05rem; line-height: 1.7; margin-bottom: 32px; max-width: 42ch; }
+    .intro { color: var(--text-sub); font-size: 1.05rem; line-height: 1.7; margin-bottom: 28px; max-width: 42ch; }
 
     .info {
       background: var(--card-bg);
@@ -82,6 +95,7 @@
       border-radius: 20px;
       padding: 28px;
       backdrop-filter: blur(16px);
+      margin-bottom: 20px;
     }
     .info h2 { font-size: 1.15rem; margin-bottom: 16px; }
     .info ul { list-style: none; display: grid; gap: 14px; }
@@ -95,6 +109,15 @@
       border: 1px solid rgba(0, 240, 255, 0.35);
       background: rgba(0, 240, 255, 0.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 11px no-repeat;
     }
+
+    .notice {
+      border-left: 3px solid var(--neon-red);
+      padding: 4px 0 4px 16px;
+      color: var(--text-sub);
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+    .notice b { color: var(--text-main); }
 
     form {
       background: var(--card-bg);
@@ -139,7 +162,10 @@
       box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15);
     }
 
-    .hint { font-size: 0.82rem; color: var(--text-sub); margin-top: 6px; }
+    .hint { font-size: 0.82rem; color: var(--text-sub); margin-top: 6px; line-height: 1.4; }
+    #trackHint { color: var(--neon-cyan); }
+
+    .phone { display: grid; grid-template-columns: 110px 1fr; gap: 10px; }
 
     .hp { position: absolute; left: -9999px; }
 
@@ -174,6 +200,7 @@
 
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; gap: 36px; }
+      .side { position: static; }
     }
     @media (max-width: 600px) {
       body { padding: 40px 16px 60px; }
@@ -188,10 +215,25 @@
     <a class="back" href="services.html#internship">&larr; Back to internship details</a>
 
     <div class="layout">
-      <div>
+      <div class="side">
+        <div class="badges">
+          <span class="badge">Free registration</span>
+          <span class="badge">Reply within 24 hours</span>
+        </div>
         <span class="tag">// Internship Application</span>
         <h1 class="title">Start your <span>tech career</span> with us</h1>
         <p class="intro">Fill in the form. It takes about 5 minutes. We read every application and reply within 24 hours.</p>
+
+        <div class="info">
+          <h2>What you receive</h2>
+          <ul>
+            <li><span><b>Internship certificate</b> on completion</span></li>
+            <li><span><b>Letter of recommendation</b> for strong performers</span></li>
+            <li><span><b>Weekly mentor review</b> of your work</span></li>
+            <li><span><b>Resume and GitHub portfolio</b> guidance</span></li>
+            <li><span><b>Mock interview</b> practice and career tips</span></li>
+          </ul>
+        </div>
 
         <div class="info">
           <h2>What happens next</h2>
@@ -201,6 +243,8 @@
             <li><span><b>You get your login.</b> Selected interns receive access to the intern portal.</span></li>
           </ul>
         </div>
+
+        <p class="notice"><b>Please apply only once per track.</b> Duplicate applications slow down your reply.</p>
       </div>
 
       <form id="apply" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
@@ -211,20 +255,53 @@
           <div class="field">
             <label for="name">Full name</label>
             <input id="name" name="name" type="text" autocomplete="name" required>
+            <p class="hint">Write it exactly as you want it on your certificate.</p>
           </div>
           <div class="field">
             <label for="email">Email</label>
             <input id="email" name="email" type="email" autocomplete="email" required>
+            <p class="hint">Double-check it. We send your reply to this email.</p>
           </div>
         </div>
         <div class="row">
           <div class="field">
-            <label for="phone">WhatsApp number</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+92 300 0000000" required>
+            <label for="country">Country</label>
+            <select id="country" name="country" required>
+              <option value="">Choose your country</option>
+              <option value="+92">Pakistan</option>
+              <option value="+91">India</option>
+              <option value="+880">Bangladesh</option>
+              <option value="+977">Nepal</option>
+              <option value="+94">Sri Lanka</option>
+              <option value="+971">UAE</option>
+              <option value="+966">Saudi Arabia</option>
+              <option value="+44">United Kingdom</option>
+              <option value="+1">United States / Canada</option>
+              <option value="">Other</option>
+            </select>
           </div>
+          <div class="field">
+            <label for="phone">WhatsApp number</label>
+            <div class="phone">
+              <input id="code" name="phone_code" type="text" aria-label="Country code" placeholder="+92" readonly>
+              <input id="phone" name="phone" type="tel" autocomplete="tel-national" placeholder="300 0000000" required>
+            </div>
+            <p class="hint">Used only for internship updates.</p>
+          </div>
+        </div>
+        <div class="row">
           <div class="field">
             <label for="city">City</label>
             <input id="city" name="city" type="text" autocomplete="address-level2" required>
+          </div>
+          <div class="field">
+            <label for="gender">Gender <span class="opt">(optional)</span></label>
+            <select id="gender" name="gender">
+              <option value="">Prefer not to say</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
           </div>
         </div>
 
@@ -233,10 +310,35 @@
           <div class="field">
             <label for="college">University or college</label>
             <input id="college" name="college" type="text" required>
+            <p class="hint">Write the full name.</p>
           </div>
           <div class="field">
-            <label for="degree">Degree and semester</label>
-            <input id="degree" name="degree" type="text" placeholder="BS Computer Science, 5th" required>
+            <label for="degree">Degree and branch</label>
+            <input id="degree" name="degree" type="text" placeholder="BS Computer Science" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="year">Current year of study</label>
+            <select id="year" name="year" required>
+              <option value="">Choose one</option>
+              <option>1st year</option>
+              <option>2nd year</option>
+              <option>3rd year</option>
+              <option>Final year</option>
+              <option>Graduated, looking for a job</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="gradyear">Graduation year</label>
+            <select id="gradyear" name="graduation_year" required>
+              <option value="">Choose one</option>
+              <option>2025 or earlier</option>
+              <option>2026</option>
+              <option>2027</option>
+              <option>2028</option>
+              <option>2029 or later</option>
+            </select>
           </div>
         </div>
 
@@ -251,6 +353,7 @@
               <option>UI/UX Design</option>
               <option>AI and Python</option>
             </select>
+            <p class="hint" id="trackHint" aria-live="polite">Pick the area you want to grow in.</p>
           </div>
           <div class="field">
             <label for="level">Your skill level</label>
@@ -282,13 +385,33 @@
             </select>
           </div>
         </div>
+        <div class="field">
+          <label for="source">Where did you hear about us?</label>
+          <select id="source" name="source" required>
+            <option value="">Choose one</option>
+            <option>LinkedIn</option>
+            <option>Facebook</option>
+            <option>Instagram</option>
+            <option>WhatsApp group</option>
+            <option>University or teacher</option>
+            <option>Friend or senior</option>
+            <option>Google search</option>
+            <option>Other</option>
+          </select>
+        </div>
 
         <div class="group">// Your work</div>
-        <div class="field">
-          <label for="links">GitHub, portfolio or CV link <span class="opt">(optional)</span></label>
-          <input id="links" name="links" type="url" placeholder="https://">
-          <p class="hint">No portfolio yet? That is fine, leave this empty. For a CV, share a Google Drive link with view access.</p>
+        <div class="row">
+          <div class="field">
+            <label for="linkedin">LinkedIn profile <span class="opt">(optional)</span></label>
+            <input id="linkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/...">
+          </div>
+          <div class="field">
+            <label for="links">GitHub or portfolio <span class="opt">(optional)</span></label>
+            <input id="links" name="links" type="url" placeholder="https://github.com/...">
+          </div>
         </div>
+        <p class="hint" style="margin:-8px 0 18px">No portfolio yet? That is fine. For a CV, share a Google Drive link with view access.</p>
         <div class="field">
           <label for="why">Why do you want to join?</label>
           <textarea id="why" name="why" placeholder="Tell us what you want to learn and what you have built or tried so far." required></textarea>
@@ -301,7 +424,7 @@
 
         <label class="check">
           <input type="checkbox" name="agree" required>
-          <span>I confirm that the details above are correct and I agree to be contacted by Code Sphere.</span>
+          <span>I confirm that the details above are correct and I agree to be contacted by Code Sphere. I will apply only once for this track.</span>
         </label>
 
         <button type="submit" id="send">Submit application</button>
@@ -315,6 +438,27 @@
   const form = document.getElementById('apply');
   const status = document.getElementById('status');
   const send = document.getElementById('send');
+  const country = document.getElementById('country');
+  const code = document.getElementById('code');
+  const track = document.getElementById('track');
+  const hint = document.getElementById('trackHint');
+
+  const builds = {
+    'Web Development': 'You will build and ship real web pages with HTML, CSS and JavaScript.',
+    'Mobile Apps': 'You will build an Android app and publish a working demo.',
+    'UI/UX Design': 'You will design app screens in Figma and test them with users.',
+    'AI and Python': 'You will build small useful tools with Python, data and AI.'
+  };
+
+  country.addEventListener('change', () => {
+    code.readOnly = country.value !== '';
+    code.value = country.value;
+    if (country.value === '') { code.placeholder = '+'; code.focus(); }
+  });
+
+  track.addEventListener('change', () => {
+    hint.textContent = builds[track.value] || 'Pick the area you want to grow in.';
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -329,6 +473,7 @@
       });
       if (!res.ok) throw new Error('failed');
       form.reset();
+      hint.textContent = 'Pick the area you want to grow in.';
       status.textContent = 'Application received. Thank you! We will contact you on email or WhatsApp within 24 hours.';
       status.className = 'ok';
       status.scrollIntoView({ behavior: 'smooth', block: 'center' });
