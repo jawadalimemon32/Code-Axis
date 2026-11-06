@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apply for the Internship | Code Axis</title>
-  <meta name="description" content="Free registration. Apply for the Code Axis internship in web development, Cyber Security, C, C++ and AI & Python. We reply within 24 hours.">
+  <meta name="description" content="Free registration. Apply for the Code Axis internship in web development, AI and Python, cyber security, C and C++. We reply within 24 hours.">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;800;900&display=swap');
@@ -338,10 +338,10 @@
             <select id="track" name="track" required>
               <option value="">Choose a track</option>
               <option>Web Development</option>
-              <option>C++ Developer</option>
-              <option>C Developer</option>
               <option>AI and Python</option>
               <option>Cyber Security</option>
+              <option>C Programming</option>
+              <option>C++ Programming</option>
             </select>
             <p class="hint" id="trackHint" aria-live="polite">Pick the area you want to grow in.</p>
           </div>
@@ -414,7 +414,7 @@
 
         <label class="check">
           <input type="checkbox" name="agree" required>
-          <span>I confirm that the details above are correct and I agree to be contacted by Code Sphere. I will apply only once for this track.</span>
+          <span>I confirm that the details above are correct and I agree to be contacted by Code Axis. I will apply only once for this track.</span>
         </label>
 
         <button type="submit" id="send">Submit application</button>
@@ -435,9 +435,10 @@
 
   const builds = {
     'Web Development': 'You will build and ship real web pages with HTML, CSS and JavaScript.',
-    'Mobile Apps': 'You will build an Android app and publish a working demo.',
-    'UI/UX Design': 'You will design app screens in Figma and test them with users.',
-    'AI and Python': 'You will build small useful tools with Python, data and AI.'
+    'AI and Python': 'You will build small useful tools with Python, data and AI.',
+    'Cyber Security': 'You will learn to find and fix security problems in safe practice labs.',
+    'C Programming': 'You will practice logic, pointers and memory, then build small programs.',
+    'C++ Programming': 'You will learn OOP and STL, then build a small project.'
   };
 
   country.addEventListener('change', () => {
