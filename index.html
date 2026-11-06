@@ -6,6 +6,8 @@
   <title>Code Axis | Web, App and AI Solutions</title>
   <meta name="description" content="Code Axis builds websites, mobile apps and AI solutions for growing businesses. Get a free quote or join our internship program.">
 
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%23030508%27/%3E%3Ctext x=%2750%27 y=%2768%27 font-size=%2762%27 font-family=%27Arial%27 font-weight=%27bold%27 text-anchor=%27middle%27 fill=%27%2300f0ff%27%3EC%3C/text%3E%3C/svg%3E">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;800;900&display=swap');
 
@@ -73,6 +75,30 @@
     .stats b { display: block; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--neon-red); line-height: 1.1; }
     .stats span { color: var(--text-sub); font-size: 0.95rem; }
 
+    /* Hero visual */
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+    .code { background: #0a1522; border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7), 0 0 40px rgba(0,240,255,0.06); font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; overflow: hidden; }
+    .code .top { display: flex; gap: 7px; padding: 12px 16px; background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--border); }
+    .code .top i { width: 11px; height: 11px; border-radius: 50%; background: #3a5772; }
+    .code pre { margin: 0; padding: 20px; color: #b6c6d6; overflow-x: auto; line-height: 1.8; font-family: 'JetBrains Mono', monospace; }
+    .code .k { color: #8bb8ff; } .code .s { color: #7cf0da; } .code .c { color: #6a8399; } .code .r { color: var(--neon-red); }
+
+    /* How we work */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; list-style: none; }
+    .steps li { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 30px; backdrop-filter: blur(16px); }
+    .steps .n { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--neon-cyan); border: 1px solid rgba(0,240,255,0.3); background: rgba(0,240,255,0.05); border-radius: 10px; width: 40px; height: 40px; display: grid; place-items: center; margin-bottom: 16px; }
+    .steps strong { display: block; font-size: 1.15rem; margin-bottom: 6px; }
+    .steps span { color: var(--text-sub); line-height: 1.6; }
+
+    /* Footer contact */
+    .contact-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; margin-bottom: 18px; }
+    .contact-line a { color: var(--text-main); text-decoration: none; }
+    .contact-line a:hover { color: var(--neon-cyan); }
+
+    /* Floating WhatsApp */
+    .wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 60; display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #03140b; font-weight: 700; text-decoration: none; padding: 12px 18px; border-radius: 99px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.2s; }
+    .wa-float:hover { transform: translateY(-3px); }
+
     /* Sections */
     section { padding: 70px 0; }
     h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 14px; }
@@ -108,6 +134,10 @@
     a:focus-visible, button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 3px; }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .steps { grid-template-columns: 1fr; }
+    }
     @media (max-width: 860px) {
       .panel { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
     }
@@ -151,18 +181,34 @@
 
   <main>
     <div class="wrap hero">
-      <span class="tag">// Ready for results? Code Axis delivers.</span>
-      <h1>Your Partner in <span>Digital Excellence</span></h1>
-      <p class="lead">Expert web development, strategic marketing, and AI solutions designed for growth.</p>
-      <div class="btns">
-        <a class="btn primary" href="services.html">Explore Services</a>
-        <a class="btn ghost" href="contact.html">Contact Us</a>
+      <div class="hero-grid">
+        <div>
+          <span class="tag">// Ready for results? Code Axis delivers.</span>
+          <h1>Your Partner in <span>Digital Excellence</span></h1>
+          <p class="lead">Web development, AI, cyber security and software solutions designed for growth.</p>
+          <div class="btns">
+            <a class="btn primary" href="services.html">Explore Services</a>
+            <a class="btn ghost" href="contact.html">Contact Us</a>
+          </div>
+        </div>
+        <div class="code" aria-hidden="true">
+          <div class="top"><i></i><i></i><i></i></div>
+<pre><span class="c">// what we build at Code Axis</span>
+<span class="k">const</span> services = [
+  <span class="s">"Web Development"</span>,
+  <span class="s">"AI &amp; Python"</span>,
+  <span class="s">"Cyber Security"</span>,
+  <span class="s">"C &amp; C++"</span>,
+];
+
+<span class="r">build</span>(yourIdea);</pre>
+        </div>
       </div>
 
       <div class="stats">
-        <div><b>50+</b><span>Projects Delivered</span></div>
-        <div><b>99%</b><span>Client Satisfaction</span></div>
-        <div><b>24/7</b><span>Technical Support</span></div>
+        <div><b>5</b><span>Core Services</span></div>
+        <div><b>24h</b><span>Reply Time</span></div>
+        <div><b>Free</b><span>Internship Registration</span></div>
       </div>
     </div>
 
@@ -174,22 +220,45 @@
 
         <div class="grid">
           <div class="card">
-            <h3>Fullstack Engineering</h3>
-            <p>Fast, responsive web apps built with modern JavaScript frameworks.</p>
-            <div class="chips"><span>React.js</span><span>Node.js</span><span>JavaScript</span></div>
+            <h3>Web Development</h3>
+            <p>Fast, responsive websites and web apps built with modern JavaScript frameworks.</p>
+            <div class="chips"><span>HTML / CSS</span><span>JavaScript</span><span>React.js</span><span>Node.js</span></div>
           </div>
           <div class="card">
-            <h3>AI &amp; ML Pipelines</h3>
-            <p>Machine learning tools, scrapers and analytics that power smart apps.</p>
-            <div class="chips"><span>Python</span><span>Pandas</span><span>Scikit-Learn</span></div>
+            <h3>AI &amp; Python</h3>
+            <p>Chatbots, data dashboards, automation scripts and prediction models for your business.</p>
+            <div class="chips"><span>Python</span><span>Pandas</span><span>Automation</span><span>LLM APIs</span></div>
           </div>
           <div class="card">
-            <h3>SEO &amp; Growth</h3>
-            <p>Search optimization and speed tuning built to improve your rankings.</p>
-            <div class="chips"><span>Core Web Vitals</span><span>Analytics</span></div>
+            <h3>Cyber Security</h3>
+            <p>Security audits, vulnerability testing and secure setup to keep your data safe.</p>
+            <div class="chips"><span>Security Audits</span><span>OWASP Top 10</span><span>Network Security</span></div>
+          </div>
+          <div class="card">
+            <h3>C Programming</h3>
+            <p>Fast, lightweight software, from system tools to embedded programs.</p>
+            <div class="chips"><span>C</span><span>Pointers</span><span>Embedded Systems</span></div>
+          </div>
+          <div class="card">
+            <h3>C++ Programming</h3>
+            <p>High-performance applications with clean object-oriented design.</p>
+            <div class="chips"><span>C++</span><span>OOP</span><span>STL</span><span>Algorithms</span></div>
           </div>
         </div>
         <p class="more"><a href="services.html">See all services &rarr;</a></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <span class="tag">// How we work</span>
+        <h2>From idea to launch in 3 steps</h2>
+        <p class="sub">A simple process, so you always know what happens next.</p>
+        <ol class="steps">
+          <li><div class="n">1</div><strong>Tell us your idea</strong><span>Share what you need through the contact form or WhatsApp.</span></li>
+          <li><div class="n">2</div><strong>Get a clear quote</strong><span>We reply within 24 hours with a plan, timeline and price.</span></li>
+          <li><div class="n">3</div><strong>We build and deliver</strong><span>You see progress along the way and get a tested, working result.</span></li>
+        </ol>
       </div>
     </section>
 
@@ -234,8 +303,14 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="contact-line">
+      <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+      <a href="tel:+920000000000">+92 000 0000000</a>
+    </div>
     &copy; Code Axis. All rights reserved.
   </footer>
+
+<a class="wa-float" href="https://wa.me/920000000000?text=Hi%20Code%20Axis%2C%20I%20want%20a%20quote%20for%20a%20project." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
 
 <script>
   const m = document.getElementById('menu'), n = document.getElementById('nav');
