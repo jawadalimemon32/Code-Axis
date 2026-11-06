@@ -29,7 +29,8 @@
     body {
       background-color: var(--bg);
       color: var(--text-main);
-      padding: 80px 24px;
+      padding: 0;
+      overflow-x: hidden;
       background-image: 
         radial-gradient(circle at 10% 20%, rgba(255, 42, 95, 0.05) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.05) 0%, transparent 40%);
@@ -38,6 +39,27 @@
     .container {
       max-width: 1240px;
       margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+
+    /* Site menu */
+    .site-header { position: sticky; top: 0; z-index: 50; background: rgba(3, 5, 8, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .site-bar { max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .site-logo { font-weight: 800; font-size: 1.35rem; text-decoration: none; color: var(--text-main); white-space: nowrap; letter-spacing: -0.5px; }
+    .site-logo span { color: var(--neon-red); }
+    .site-nav { display: flex; align-items: center; gap: 4px; }
+    .site-nav a { text-decoration: none; color: var(--text-sub); padding: 8px 14px; border-radius: 8px; font-size: 0.95rem; transition: color 0.2s, background 0.2s; }
+    .site-nav a:hover, .site-nav a[aria-current] { color: var(--text-main); background: rgba(255, 255, 255, 0.06); }
+    .site-nav .nav-cta { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); color: #030508; font-weight: 700; margin-left: 8px; }
+    .site-nav .nav-cta:hover { color: #030508; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); filter: brightness(1.1); }
+    .site-menu { display: none; font: inherit; color: var(--text-main); background: none; border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+    @media (max-width: 800px) {
+      .site-menu { display: block; }
+      .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: rgba(3, 5, 8, 0.98); padding: 12px 24px 20px; border-bottom: 1px solid var(--border); }
+      .site-nav.open { display: flex; }
+      .site-nav a { padding: 13px 12px; }
+      .site-nav .nav-cta { margin: 8px 0 0; text-align: center; }
     }
 
     /* Header Styling */
@@ -350,7 +372,7 @@
     }
 
     @media (max-width: 760px) {
-      body { padding: 56px 18px; }
+      .container { padding: 56px 18px; }
       .title { font-size: 2.2rem; }
       .service-card { padding: 28px; }
       .internship { margin-top: 80px; }
@@ -361,6 +383,23 @@
   </style>
 </head>
 <body>
+
+  <header class="site-header">
+    <div class="site-bar">
+      <a class="site-logo" href="index.html">Code <span>Axis</span></a>
+      <button class="site-menu" id="siteMenu" aria-expanded="false" aria-controls="siteNav">Menu</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="services.html" aria-current="page">Services</a>
+        <a href="services.html#internship">Internship</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="apply.html">Apply</a>
+      </nav>
+    </div>
+  </header>
+
 
   <div class="container">
     <div class="header-group">
@@ -373,7 +412,7 @@
       <!-- Card 1 -->
       <div class="service-card">
         <span class="num">01</span>
-        <h3 class="card-title">Fullstack Engineering</h3>
+        <h3 class="card-title">Web Development</h3>
         <p class="card-desc">Production-grade web apps engineered with modern JavaScript frameworks, responsive interfaces, and ultra-fast loading speed.</p>
         <div class="stack-tags">
           <span class="tag-item">HTML5 / CSS3</span>
@@ -388,12 +427,13 @@
       <div class="service-card">
         <span class="num">02</span>
         <h3 class="card-title">AI & Python</h3>
-        <p class="card-desc">Use Python, data and AI tools to build small, useful projects. You will learn data cleaning, simple machine learning, and how to turn your work into a real tool.</p>
+        <p class="card-desc">Custom AI and Python solutions for your business: chatbots, data dashboards, automation scripts, and prediction models that help you make faster, smarter decisions.</p>
         <div class="stack-tags">
           <span class="tag-item">Python</span>
           <span class="tag-item">Pandas</span>
           <span class="tag-item">Scikit-Learn</span>
           <span class="tag-item">Automation</span>
+          <span class="tag-item">LLM APIs</span>
         </div>
         <a href="contact.html" class="action-btn">Build Model <span>&rarr;</span></a>
       </div>
@@ -402,13 +442,42 @@
       <div class="service-card">
         <span class="num">03</span>
         <h3 class="card-title">Cyber Security</h3>
-        <p class="card-desc">Learn how to find and fix security problems in websites and networks, using safe practice labs and real security tools.</p>
+        <p class="card-desc">Security audits, vulnerability testing and secure setup for your website and apps, so your business and your customers' data stay safe.</p>
         <div class="stack-tags">
           <span class="tag-item">Security Audits</span>
+          <span class="tag-item">Penetration Testing</span>
           <span class="tag-item">OWASP Top 10</span>
           <span class="tag-item">Network Security</span>
         </div>
-        <a href="contact.html" class="action-btn">Optimize Site <span>&rarr;</span></a>
+        <a href="contact.html" class="action-btn">Secure My Site <span>&rarr;</span></a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card">
+        <span class="num">04</span>
+        <h3 class="card-title">C Programming</h3>
+        <p class="card-desc">We build fast, lightweight software in C, from system tools to embedded programs that run close to the hardware.</p>
+        <div class="stack-tags">
+          <span class="tag-item">C</span>
+          <span class="tag-item">Pointers</span>
+          <span class="tag-item">Data Structures</span>
+          <span class="tag-item">Embedded Systems</span>
+        </div>
+        <a href="contact.html" class="action-btn">Start Project <span>&rarr;</span></a>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="service-card">
+        <span class="num">05</span>
+        <h3 class="card-title">C++ Programming</h3>
+        <p class="card-desc">We build high-performance applications in C++, from desktop software to tools that need speed, stability and clean object-oriented design.</p>
+        <div class="stack-tags">
+          <span class="tag-item">C++</span>
+          <span class="tag-item">OOP</span>
+          <span class="tag-item">STL</span>
+          <span class="tag-item">Algorithms</span>
+        </div>
+        <a href="contact.html" class="action-btn">Start Project <span>&rarr;</span></a>
       </div>
 
     </div>
@@ -438,35 +507,18 @@
           </div>
         </div>
 
-        <div class="service-card">
-          <h3 class="card-title">C Programming</h3>
-          <p class="card-desc">We build fast, lightweight software in C, from system tools to embedded programs that run close to the hardware.</p>
-          <div class="stack-tags">
-            <span class="tag-item">C</span>
-            <span class="tag-item">Pointers</span>
-            <span class="tag-item">Data Structures</span>
-          </div>
-        </div>
+
 
         <div class="service-card">
-          <h3 class="card-title">C++ Programming</h3>
-          <p class="card-desc">We build high-performance applications in C++, from desktop software to tools that need speed, stability and clean object-oriented design.</p>
-          <div class="stack-tags">
-            <span class="tag-item">C++</span>
-            <span class="tag-item">OOP</span>
-            <span class="tag-item">Algorithms</span>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <h3 class="card-title">AI & Python</h3>
-          <p class="card-desc">Use Python, data and AI tools to build small useful solutions.</p>
+          <h3 class="card-title">AI and Python</h3>
+          <p class="card-desc">Use Python, data and AI tools to build small, useful projects. Learn data cleaning, simple machine learning and how to turn your work into a real tool.</p>
           <div class="stack-tags">
             <span class="tag-item">Python</span>
             <span class="tag-item">Pandas</span>
             <span class="tag-item">Basic coding needed</span>
           </div>
         </div>
+
         <div class="service-card">
           <h3 class="card-title">Cyber Security</h3>
           <p class="card-desc">Learn how to find and fix security problems in websites and networks, using safe practice labs and real security tools.</p>
@@ -478,6 +530,25 @@
           </div>
         </div>
 
+        <div class="service-card">
+          <h3 class="card-title">C Programming</h3>
+          <p class="card-desc">Learn programming from the ground up. Practice logic, functions, pointers and memory, then build small real programs.</p>
+          <div class="stack-tags">
+            <span class="tag-item">C</span>
+            <span class="tag-item">Pointers</span>
+            <span class="tag-item">Beginner friendly</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 class="card-title">C++ Programming</h3>
+          <p class="card-desc">Learn OOP, STL and algorithms, then build a small project such as a management system or a simple game.</p>
+          <div class="stack-tags">
+            <span class="tag-item">C++</span>
+            <span class="tag-item">OOP</span>
+            <span class="tag-item">Basic coding needed</span>
+          </div>
+        </div>
       </div>
 
       <div class="split">
@@ -498,7 +569,7 @@
           <ol class="steps">
             <li><span class="step-num">1</span><div><strong>Apply</strong><span>Fill in the application form with your details and chosen track.</span></div></li>
             <li><span class="step-num">2</span><div><strong>Short interview</strong><span>A quick chat about your goals. No hard tests.</span></div></li>
-            <li><span class="step-num">3</span><div><strong>Start working</strong><span>Log in to the portal, get your tasks and meet your mentor.</span></div></li>
+            <li><span class="step-num">3</span><div><strong>Start working</strong><span>Get your tasks, meet your mentor and start building.</span></div></li>
             <li><span class="step-num">4</span><div><strong>Present and graduate</strong><span>Show your final project and receive your certificate.</span></div></li>
           </ol>
         </div>
@@ -508,10 +579,14 @@
         <h3>Ready to start?</h3>
         <p>Tell us your track and a little about yourself. We reply within 24 hours.</p>
         <a href="apply.html" class="cta-btn">Apply for the internship</a>
-        <small>Already selected?</small>
       </div>
     </section>
   </div>
 
+
+<script>
+  const sm = document.getElementById('siteMenu'), sn = document.getElementById('siteNav');
+  sm.addEventListener('click', () => { const o = sn.classList.toggle('open'); sm.setAttribute('aria-expanded', String(o)); });
+</script>
 </body>
 </html>
