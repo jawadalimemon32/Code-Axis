@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Code Axis - Contact Us</title>
-  
+  <title>Contact Code Axis | Get a Free Quote</title>
+  <meta name="description" content="Tell us about your website, AI, cyber security or software project. Code Axis replies within 24 hours with a free quote.">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;800;900&display=swap');
 
@@ -17,362 +18,197 @@
       --neon-purple: #8a2be2;
       --text-main: #f0f4f8;
       --text-sub: #7e8b9b;
+      --field: rgba(255, 255, 255, 0.04);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Outfit', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
     body {
       background-color: var(--bg);
       color: var(--text-main);
-      padding: 80px 24px;
-      background-image: 
-        radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 10% 80%, rgba(255, 42, 95, 0.05) 0%, transparent 40%);
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 42, 95, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.05) 0%, transparent 40%);
+    }
+    /* Site menu */
+    .site-header { position: sticky; top: 0; z-index: 50; background: rgba(3, 5, 8, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .site-bar { max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .site-logo { font-weight: 800; font-size: 1.35rem; text-decoration: none; color: var(--text-main); white-space: nowrap; letter-spacing: -0.5px; }
+    .site-logo span { color: var(--neon-red); }
+    .site-nav { display: flex; align-items: center; gap: 4px; }
+    .site-nav a { text-decoration: none; color: var(--text-sub); padding: 8px 14px; border-radius: 8px; font-size: 0.95rem; transition: color 0.2s, background 0.2s; }
+    .site-nav a:hover, .site-nav a[aria-current] { color: var(--text-main); background: rgba(255, 255, 255, 0.06); }
+    .site-nav .nav-cta { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); color: #030508; font-weight: 700; margin-left: 8px; }
+    .site-nav .nav-cta:hover { color: #030508; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); filter: brightness(1.1); }
+    .site-menu { display: none; font: inherit; color: var(--text-main); background: none; border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+    @media (max-width: 800px) {
+      .site-menu { display: block; }
+      .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: rgba(3, 5, 8, 0.98); padding: 12px 24px 20px; border-bottom: 1px solid var(--border); }
+      .site-nav.open { display: flex; }
+      .site-nav a { padding: 13px 12px; }
+      .site-nav .nav-cta { margin: 8px 0 0; text-align: center; }
     }
 
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
 
-    .tag {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--neon-cyan);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      display: inline-block;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 70px 24px 90px; }
+    .layout { display: grid; grid-template-columns: 0.9fr 1.3fr; gap: 56px; align-items: start; }
 
-    .title {
-      font-size: 3.2rem;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
+    .tag { font-family: 'JetBrains Mono', monospace; color: var(--neon-cyan); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; display: inline-block; }
+    .title { font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
+    .title span { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .intro { color: var(--text-sub); font-size: 1.05rem; line-height: 1.7; margin-bottom: 28px; max-width: 42ch; }
 
-    .title span {
-      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .info { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 28px; backdrop-filter: blur(16px); margin-bottom: 20px; }
+    .info h2 { font-size: 1.15rem; margin-bottom: 16px; }
+    .ways { list-style: none; display: grid; gap: 16px; }
+    .ways li span { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-sub); margin-bottom: 2px; }
+    .ways a { text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .ways a:hover { color: var(--neon-cyan); }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(0, 255, 136, 0.08);
-      border: 1px solid rgba(0, 255, 136, 0.2);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #00ff88;
-      margin-bottom: 40px;
-    }
+    .wa { display: inline-block; margin-top: 22px; text-decoration: none; font-weight: 700; color: #03140b; background: #25d366; padding: 13px 24px; border-radius: 12px; transition: transform 0.2s, box-shadow 0.2s; }
+    .wa:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.25); }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: #00ff88;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #00ff88;
-    }
+    .student { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; border-left: 3px solid var(--neon-cyan); padding: 4px 0 4px 16px; }
+    .student a { color: var(--neon-cyan); font-weight: 600; }
 
-    .contact-split {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 50px;
-      align-items: start;
-    }
+    form { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 40px; backdrop-filter: blur(16px); }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; font-size: 0.93rem; margin-bottom: 7px; }
+    .opt { font-weight: 400; color: var(--text-sub); }
+    input, select, textarea { width: 100%; font: inherit; color: var(--text-main); background: var(--field); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; transition: border-color 0.2s, box-shadow 0.2s; }
+    select option { background: #0c101a; color: var(--text-main); }
+    textarea { min-height: 140px; resize: vertical; line-height: 1.5; }
+    input::placeholder, textarea::placeholder { color: #566272; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15); }
+    .hp { position: absolute; left: -9999px; }
 
-    /* Left Info Column */
-    .info-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-      backdrop-filter: blur(16px);
-    }
+    button.send { width: 100%; font: inherit; font-weight: 700; font-size: 1.05rem; color: #030508; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); border: 0; border-radius: 12px; padding: 16px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+    button.send:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25); }
+    button.send:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
+    .note { text-align: center; color: var(--text-sub); font-size: 0.88rem; margin-top: 14px; }
 
-    .info-item {
-      margin-bottom: 30px;
-    }
+    #status { display: none; margin-top: 18px; padding: 16px; border-radius: 12px; line-height: 1.5; }
+    #status.ok { display: block; background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.3); color: var(--neon-cyan); }
+    #status.err { display: block; background: rgba(255, 42, 95, 0.1); border: 1px solid rgba(255, 42, 95, 0.4); color: #ff7a98; }
 
-    .info-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .info-label {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--text-sub);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    .info-value {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .copy-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: var(--neon-cyan);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .copy-btn:hover {
-      background: rgba(0, 240, 255, 0.15);
-      border-color: var(--neon-cyan);
-    }
-
-    /* Right Form Column */
-    .form-terminal {
-      background: rgba(5, 7, 12, 0.9);
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.05);
-    }
-
-    .terminal-top {
-      background: rgba(20, 25, 38, 0.8);
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .circle {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .c-red { background: #ff5f56; }
-    .c-yellow { background: #ffbd2e; }
-    .c-green { background: #27c93f; }
-
-    .terminal-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--text-sub);
-      margin-left: auto;
-    }
-
-    .form-body {
-      padding: 40px;
-    }
-
-    .field-group {
-      margin-bottom: 25px;
-    }
-
-    .field-group label {
-      display: block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--text-sub);
-      margin-bottom: 8px;
-    }
-
-    .input-control, .select-control, .textarea-control {
-      width: 100%;
-      background: rgba(12, 16, 26, 0.8);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 18px;
-      color: var(--text-main);
-      font-size: 0.95rem;
-      outline: none;
-      transition: all 0.3s ease;
-    }
-
-    .input-control:focus, .select-control:focus, .textarea-control:focus {
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-    }
-
-    .textarea-control {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .chip-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .chip {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      color: var(--text-sub);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .chip.active, .chip:hover {
-      background: rgba(0, 240, 255, 0.1);
-      border-color: var(--neon-cyan);
-      color: var(--neon-cyan);
-    }
-
-    .submit-btn {
-      width: 100%;
-      background: linear-gradient(135deg, var(--neon-red), var(--neon-purple));
-      border: none;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: opacity 0.3s ease, transform 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .submit-btn:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 992px) {
-      .contact-split {
-        grid-template-columns: 1fr;
-      }
-    }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; gap: 36px; } }
+    @media (max-width: 600px) { .container { padding: 44px 16px 64px; } form { padding: 24px 20px; } .row { grid-template-columns: 1fr; gap: 0; } }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <span class="tag">// Dispatch Channel</span>
-    <h1 class="title">Initiate a <span>Project Request</span></h1>
-    
-    <div class="status-badge">
-      <div class="status-dot"></div>
-      <span>Systems Active — Ready for New Projects</span>
+  <header class="site-header">
+    <div class="site-bar">
+      <a class="site-logo" href="index.html">Code <span>Axis</span></a>
+      <button class="site-menu" id="siteMenu" aria-expanded="false" aria-controls="siteNav">Menu</button>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="internship.html">Internship</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a class="nav-cta" href="apply.html">Apply</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="contact-split">
-      
-      <!-- Direct Contact Details -->
-      <div class="info-card">
-        <div class="info-item">
-          <span class="info-label">Direct Email</span>
-          <div class="info-value">
-            <span id="emailText">hello@codesphere.dev</span>
-            <button class="copy-btn" onclick="copyValue('emailText')">Copy</button>
-          </div>
+  <div class="container">
+    <div class="layout">
+      <div>
+        <span class="tag">// Contact</span>
+        <h1 class="title">Tell us what you want to <span>build</span></h1>
+        <p class="intro">Websites, AI tools, cyber security or software projects. Share a few details and we will send you a clear quote and timeline.</p>
+
+        <div class="info">
+          <h2>Reach us directly</h2>
+          <ul class="ways">
+            <li><span>Email</span><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></li>
+            <li><span>Phone</span><a href="tel:+920000000000">+92 000 0000000</a></li>
+            <li><span>Working hours</span>Mon to Sat, 10 am to 7 pm (PKT)</li>
+            <li><span>Reply time</span>Within 24 hours</li>
+          </ul>
+          <a class="wa" href="https://wa.me/920000000000?text=Hi%20Code%20Axis%2C%20I%20want%20a%20quote%20for%20a%20project." target="_blank" rel="noopener">Chat on WhatsApp</a>
         </div>
 
-        <div class="info-item">
-          <span class="info-label">Source Code & Repositories</span>
-          <div class="info-value">
-            <span>github.com/codeaxis</span>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <span class="info-label">Expected Response Time</span>
-          <div class="info-value">Under 24 Hours</div>
-        </div>
-
-        <div class="info-item">
-          <span class="info-label">Location</span>
-          <div class="info-value">PAK / GLOBAL </div>
-        </div>
+        <p class="student">Are you a student looking for an internship? Please use the <a href="apply.html">internship application form</a>, not this page.</p>
       </div>
 
-      <!-- Terminal Contact Form -->
-      <div class="form-terminal">
-        <div class="terminal-top">
-          <div class="circle c-red"></div>
-          <div class="circle c-yellow"></div>
-          <div class="circle c-green"></div>
-          <span class="terminal-title">message-payload.json</span>
+      <form id="quote" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="New project enquiry">
+        <div class="row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
         </div>
-
-        <form class="form-body" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-          <div class="field-group">
-            <label for="name">// Full Name</label>
-            <input type="text" id="name" class="input-control" placeholder="Enter your full name" required />
+        <div class="row">
+          <div class="field">
+            <label for="phone">Phone or WhatsApp <span class="opt">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
           </div>
-
-          <div class="field-group">
-            <label for="email">// Email Address</label>
-            <input type="email" id="email" class="input-control" placeholder="yourname@domain.com" required />
+          <div class="field">
+            <label for="service">What do you need?</label>
+            <select id="service" name="service" required>
+              <option value="">Choose a service</option>
+              <option>Web Development</option>
+              <option>AI &amp; Python</option>
+              <option>Cyber Security</option>
+              <option>C Programming</option>
+              <option>C++ Programming</option>
+              <option>Something else</option>
+            </select>
           </div>
-
-          <div class="field-group">
-            <label>// Select Core Service Need</label>
-            <div class="chip-group">
-              <span class="chip active">Web Dev</span>
-              <span class="chip">AI & Python</span>
-              <span class="chip">C & C++</span>
-              <span class="chip">Cyber Security</span>
-            </div>
-          </div>
-
-          <div class="field-group">
-            <label for="message">// Project Specifications</label>
-            <textarea id="message" class="textarea-control" placeholder="Briefly describe your scope, timelines, and key requirements..." required></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">
-            Send Message <span>&rarr;</span>
-          </button>
-        </form>
-      </div>
-
+        </div>
+        <div class="field">
+          <label for="message">Project details</label>
+          <textarea id="message" name="message" placeholder="What should it do? Who is it for? Any deadline?" required></textarea>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="website">Leave this empty</label>
+          <input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="send" id="send">Get a free quote</button>
+        <p class="note">Your details stay private and are only used to reply to you.</p>
+        <div id="status" role="status" aria-live="polite"></div>
+      </form>
     </div>
   </div>
 
-  <script>
-    function copyValue(elementId) {
-      const text = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(text);
-      alert('Copied to clipboard: ' + text);
+<script>
+  const sm = document.getElementById('siteMenu'), sn = document.getElementById('siteNav');
+  sm.addEventListener('click', () => { const o = sn.classList.toggle('open'); sm.setAttribute('aria-expanded', String(o)); });
+</script>
+<script>
+  const form = document.getElementById('quote');
+  const status = document.getElementById('status');
+  const send = document.getElementById('send');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.className = '';
+    send.disabled = true;
+    send.textContent = 'Sending...';
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error('failed');
+      form.reset();
+      status.textContent = 'Thank you. We received your message and will reply within 24 hours.';
+      status.className = 'ok';
+    } catch (err) {
+      status.textContent = 'The message was not sent. Check your connection and try again, or message us on WhatsApp.';
+      status.className = 'err';
     }
-
-    // Toggle Chip Selection
-    document.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-      });
-    });
-  </script>
-
+    send.disabled = false;
+    send.textContent = 'Get a free quote';
+  });
+</script>
 </body>
 </html>
